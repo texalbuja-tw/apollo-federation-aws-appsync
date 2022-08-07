@@ -21,12 +21,12 @@ data "aws_iam_policy_document" "lambda_hello_world" {
 }
 
 resource "aws_lambda_function" "hello_world" {
-  filename      = "../lambda/hello_world.zip"
+  filename      = "hello_world.zip"
   function_name = "hello_world"
   role          = aws_iam_role.lambda_hello_world.arn
-  handler       = "hello_world"
+  handler       = "src.main.hello_world"
 
-  source_code_hash = filebase64sha256("../lambda/hello_world/main.py")
+  source_code_hash = filebase64sha256("src/main.py")
 
   runtime = "python3.8"
 }
@@ -114,3 +114,4 @@ resource "aws_appsync_resolver" "hello_world_lambda" {
     ]
   }
 }
+
