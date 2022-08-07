@@ -24,7 +24,7 @@ resource "aws_lambda_function" "hello_world" {
   filename      = "../lambda/hello_world.zip"
   function_name = "hello_world"
   role          = aws_iam_role.lambda_hello_world.arn
-  handler       = "src.main.hello_world"
+  handler       = "hello_world"
 
   source_code_hash = filebase64sha256("../lambda/hello_world/main.py")
 
